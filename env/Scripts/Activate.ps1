@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\kel_l\Desktop\git_projects_repo\DjangoPractice\env"
+$env:VIRTUAL_ENV="$PSScriptRoot"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name
@@ -48,4 +48,5 @@ if (Test-Path env:PYTHONHOME) {
 
 # Add the venv to the PATH
 copy-item env:PATH env:_OLD_VIRTUAL_PATH
-$env:PATH = "$env:VIRTUAL_ENV\Scripts;$env:PATH"
+
+$env:PATH = "$env:VIRTUAL_ENV;$env:PATH"
