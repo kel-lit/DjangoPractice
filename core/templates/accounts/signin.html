@@ -26,7 +26,7 @@
 									<span class="alert-icon">
 										<i class="ti-alert"></i>
 									</span>
-									<span>Invalid User or Password</span>
+									<span>Invalid Username or Password</span>
 								</div>
 							</div>
 							{% endif %}
@@ -45,8 +45,13 @@
 								<label class="custom-control-label" for="customCheck1">Remember password</label>
 							</div>
 							<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+							<p>Forgot your password? Click <a href="/reset">here</a> to reset.</p>
+							<hr/>
 						</form>
-						Forgot your password? <a href="/reset">Click here</a>
+							<p>Don't have an account?</p>
+							<div class="form-signin">
+							<a href="/signup/"><button class="form-signin btn btn-lg btn-primary btn-block text-uppercase">Sign up </button></a>
+							</div>
 					</div>
 				</div>
 			</div>

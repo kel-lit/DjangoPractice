@@ -3,20 +3,36 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 
+from .lib.database import create_user
 
 # Dashboard
 # ---------
-@login_required(login_url='signin')
+@login_required(login_url='signin', redirect_field_name=None)
 def dashboard(request):
 
     return render(request, 'dashboard/home.html')
 
+# Signup
+# --------------
+def signupView(request):
+    
+    if request.method == "POST":
+        successful = create_user(request.POST)
+
+        if not successful:
+            return render(request, 'accounts/signup.html', {'errors': "There's a problem with signing up right now."})
+
+        else:
+            return redirect('core:dashboard')
+
+    else:
+        return render(request, 'accounts/signup.html')
 
 # Signin/Signout
 # --------------
 def signinView(request):
     if request.user.is_authenticated:
-        return redirect('core:core')
+        return redirect('core:dashboard')
 
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
@@ -26,7 +42,7 @@ def signinView(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('core:core')
+                return redirect('core:dashboard')
             else:
                 return redirect('signup')
     else:
