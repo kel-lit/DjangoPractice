@@ -20,6 +20,16 @@
 						<h5 class="card-title text-center">Sign In</h5>
 						<form class="form-signin" action="{% url 'signin' %}" method="POST">
 							{% csrf_token %}
+							{% if form.errors %}
+							<div class="alert alert-danger">
+								<div class="d-flex align-items-center justify-content-start">
+									<span class="alert-icon">
+										<i class="ti-alert"></i>
+									</span>
+									<span>Invalid User or Password</span>
+								</div>
+							</div>
+							{% endif %}
 							<div class="form-label-group">
 								<input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
 								<label for="inputUsername">Username</label>

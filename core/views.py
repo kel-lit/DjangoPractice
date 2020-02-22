@@ -16,7 +16,7 @@ def dashboard(request):
 # --------------
 def signinView(request):
     if request.user.is_authenticated:
-        return redirect('/')
+        return redirect('core:core')
 
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
@@ -26,7 +26,7 @@ def signinView(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/')
+                return redirect('core:core')
             else:
                 return redirect('signup')
     else:
