@@ -24,3 +24,7 @@ def create_user(post_data):
 
     except:
         return False
+
+def check_user(username):
+
+    return User.objects.filter(username=username).exists()
