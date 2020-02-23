@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.http import JsonResponse
 
-from .lib.database import create_user
+from .lib.database import create_user, check_user
 
 # Dashboard
 # ---------
@@ -15,8 +16,18 @@ def dashboard(request):
 # Signup
 # --------------
 def signupView(request):
+
+    
+
     
     if request.method == "POST":
+
+        if 'CheckUser' in request.headers:
+
+            is_taken = check_user(request.headers['CheckUser'])
+
+            return JsonResponse({'is_taken': is_taken})
+
         successful = create_user(request.POST)
 
         if not successful:
