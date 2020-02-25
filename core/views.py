@@ -16,9 +16,6 @@ def dashboard(request):
 # Signup
 # --------------
 def signupView(request):
-
-    
-
     
     if request.method == "POST":
 
@@ -63,3 +60,9 @@ def signinView(request):
 def signoutView(request):
     logout(request)
     return redirect('signin')
+
+# Reset
+# ------------
+def resetView(request):
+
+    return render(request, 'accounts/reset.html')
