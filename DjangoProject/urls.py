@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('core.urls', namespace='core')),
     path('account/login/', views.signinView, name='signin'),
     path('account/logout/', views.signoutView, name='signout'),
-    path('signup/', views.signupView, name='signup')
+    path('account/signup/', views.signupView, name='signup'),
+    path('account/reset/', views.resetView, name='reset')
 ]
