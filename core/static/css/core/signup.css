@@ -1,7 +1,7 @@
 .user-taken-tooltip, 
 .email-invalid-tooltip,
 .password-invalid-tooltip{
-    color: rgb(236, 94, 94);
+    color: #495057;
     text-align: center;
     transform: translate(0, -10px);
     padding: 4px 0;
