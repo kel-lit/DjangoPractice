@@ -1,37 +1,62 @@
-.user-taken-tooltip{
-    background: #333;
-    color: white;
-    font-weight: bold;
-    padding: 4px 8px;
+.user-taken-tooltip, 
+.email-invalid-tooltip,
+.password-invalid-tooltip{
+    color: rgb(236, 94, 94);
+    text-align: center;
+    transform: translate(0, -10px);
+    padding: 4px 0;
     font-size: 13px;
     border-radius: 4px;
 }
-#arrow,
-#arrow::before {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  z-index: -1;
+
+.password-invalid-tooltip p{
+    display: inline;
 }
 
-#arrow::before {
-  content: '';
-  transform: rotate(45deg);
-  background: #333;
+.form-control-invalid{
+    border-color: rgb(236, 94, 94);
 }
 
-.user-taken-tooltip[data-popper-placement^='top'] > #arrow {
-    bottom: -4px;
+.form-control-invalid:focus{
+    border-color: rgb(236, 94, 94);
+    box-shadow: 0 0 0 0.2rem rgba(255, 34, 34, 0.25);
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 34, 34, 0.25);
+    -moz-box-shadow: 0 0 0 0.2rem rgba(255, 34, 34, 0.25);
 }
 
-.user-taken-tooltip[data-popper-placement^='bottom'] > #arrow {
-    top: -4px;
+.form-control-valid{
+    border-color: rgb(96, 223, 117);
 }
 
-.user-taken-tooltip[data-popper-placement^='left'] > #arrow {
-    right: -4px;
+.form-control-valid:focus{
+    border-color: rgb(96, 223, 117);
+    box-shadow: 0 0 0 0.2rem rgba(78, 255, 34, 0.25);
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(78, 255, 34, 0.25);
+    -moz-box-shadow: 0 0 0 0.2rem rgba(78, 255, 34, 0.25);
 }
 
-.user-taken-tooltip[data-popper-placement^='right'] > #arrow {
-    left: -4px;
+.valid-check-container{
+    position: absolute;
+    width: 100%;
+    float: right;
+    top: 25%;
+    right: 3%;
+}
+
+.valid-check {
+    display: block;
+    float: right;
+}
+
+.fa-check-circle{
+    font-size: 1rem;
+    color: rgb(96, 223, 117);
+}
+
+.password-tooltip-valid {
+    color: rgb(11, 144, 33);
+}
+
+.password-tooltip-invalid {
+    color: rgb(236, 94, 94);
 }
