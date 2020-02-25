@@ -1,0 +1,53 @@
+{% extends "signin_base.html" %}
+{% load static %}
+
+{% block title %}
+Forum Reset Password
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+			<div class="card card-signin my-5">
+				<div class="card-body">
+                    <div class="signin-heading-div">
+                        <h1 class="signin-heading">Forum</h1>
+                    </div>
+					<h5 class="card-title text-center">Reset</h5>
+					<form class="form-signin" action="{% url 'reset' %}" method="POST">
+						<div class="form-label-group">
+							<input type="email" id="inputEmail" class="form-control" name="email" 
+								placeholder="Email" required>
+							<div class="valid-check-container" id="email-check" hidden>
+								<div class="valid-check">
+									<i class="far fa-check-circle"></i>
+								</div>
+							</div>
+                            <label for="inputEmail">Email</label>
+                            <div class="account-tooltip email-invalid-tooltip" hidden>
+                                <div class="account-tooltip-text email-invalid-tooltip-text">
+                                    Please enter a valid email
+                                </div>
+                            </div>
+						</div>						
+						<button class="btn btn-lg btn-primary btn-block text-uppercase signin-submit" 
+                            type="submit">Send reset email</button>
+                        <hr/>
+                    </form>
+                    <p>Back to sign in</p>
+                    <div class="form-signin">
+                        <a href="/"><button class="form-signin btn btn-lg btn-primary btn-block text-uppercase">Sign in</button></a>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
