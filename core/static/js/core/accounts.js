@@ -28,7 +28,7 @@ function isUserValid(){
 
     $("#inputUsername").bind('input', function(){
         $.ajax({
-            url: '/signup/',
+            url: '/account/signup/',
             method: 'POST',
             headers: {
                 'CheckUser': $("#inputUsername").val(),
