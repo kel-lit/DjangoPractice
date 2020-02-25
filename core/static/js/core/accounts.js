@@ -1,6 +1,7 @@
+// JS for signup page
 $(document).ready(function(){
 
-    $('.btn').prop('disabled', true);
+    $('.signin-submit').prop('disabled', true);
 
     var user_valid, email_valid, pass_valid;
 
@@ -10,10 +11,10 @@ $(document).ready(function(){
         pass_valid = $('#inputPassword').attr("data-valid");
         if (user_valid && email_valid && pass_valid === 'true'){
             // enable form button when all inputs are valid
-            $('.btn').prop('disabled', false);
+            $('.signin-submit').prop('disabled', false);
         }
         else {
-            $('.btn').prop('disabled', true);
+            $('.signin-submit').prop('disabled', true);
         }
     });
 
@@ -106,7 +107,7 @@ function usernameTaken(is_taken, username){
 
     if (username == ""){
         //If field is empty, remove invalid css
-        $('.username-invalid-tooltip').prop('hidden', true);
+        $('.user-taken-tooltip').prop('hidden', true);
         $('#username-check').prop('hidden', true);
         validInput(true, "#inputUsername");
     }
@@ -171,35 +172,35 @@ function passIsValid(password){
 
 function createPasswordTooltip(password){
 
-    var tooltip = "Your password must have at least: ";
+    var tooltip = "Your password must have at least: <br>";
 
     // 8 Chars
     if (!(/^[A-Za-z\d@$!%*?&]{8,}$/.test(password))){
-        tooltip += "<p class='password-tooltip-invalid'>8 characters, ";
+        tooltip += "<p class='password-tooltip-invalid'>8 characters, <br>";
     }
     else {
-        tooltip += "<p class='password-tooltip-valid'>8 characters, ";
+        tooltip += "<p class='password-tooltip-valid'>8 characters, <br>";
     };
     // One uppercase
     if (!(/^(?=.*[A-Z])/.test(password))){
-        tooltip += "<p class='password-tooltip-invalid'>one uppercase letter, ";
+        tooltip += "<p class='password-tooltip-invalid'>one uppercase letter, <br>";
     }
     else {
-        tooltip += "<p class='password-tooltip-valid'>one uppercase letter, ";
+        tooltip += "<p class='password-tooltip-valid'>one uppercase letter, <br>";
     };
     // One lowercase
     if (!(/^(?=.*[a-z])/.test(password))){
-        tooltip += "<p class='password-tooltip-invalid'>one lowercase letter, ";
+        tooltip += "<p class='password-tooltip-invalid'>one lowercase letter, <br>";
     }
     else {
-        tooltip += "<p class='password-tooltip-valid'>one lowercase letter, ";
+        tooltip += "<p class='password-tooltip-valid'>one lowercase letter, <br>";
     };
     // One number
     if (!(/^(?=.*\d)/.test(password))){
-        tooltip += "<p class='password-tooltip-invalid'>one number, ";
+        tooltip += "<p class='password-tooltip-invalid'>one number, <br>";
     }
     else {
-        tooltip += "<p class='password-tooltip-valid'>one number, ";
+        tooltip += "<p class='password-tooltip-valid'>one number, <br>";
     };
     // One special char
     if (!(/^(?=.*[@$!%*?&])/.test(password))){
