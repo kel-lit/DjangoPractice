@@ -28,26 +28,55 @@ Forum Sign Up
 							</div>
 						</div>
 						{% endif %}
+
 						<div class="form-label-group">
-							<div class="user-taken-tooltip" role="tooltip" hidden>
-								This username is taken
-								<div id="arrow" data-popper-arrow></div>
+							<input type="text" id="inputUsername" class="form-control" name="username" 
+								placeholder="Username" maxlength="30" required autofocus >
+							<div class="valid-check-container" id="username-check" hidden>
+								<div class="valid-check">
+									<i class="far fa-check-circle"></i>
+								</div>
 							</div>
-							<input type="text" id="inputUsername" class="form-control" aria-describedby="tooltip"
-							 name="username" placeholder="Username" required autofocus>
 							<label for="inputUsername">Username</label>
+						</div>
+						<div class="user-taken-tooltip" hidden>
+							<div class="user-taken-tooltip-text">
+								This username is taken
+							</div>
 						</div>
 
 						<div class="form-label-group">
-							<input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email" required autofocus>
+							<input type="email" id="inputEmail" class="form-control" name="email" 
+								placeholder="Email" required>
+							<div class="valid-check-container" id="email-check" hidden>
+								<div class="valid-check">
+									<i class="far fa-check-circle"></i>
+								</div>
+							</div>
 							<label for="inputEmail">Email</label>
 						</div>
-			
+						<div class="email-invalid-tooltip" hidden>
+							<div class="email-invalid-tooltip-text">
+								Please enter a valid email
+							</div>
+						</div>
+
 						<div class="form-label-group">
-							<input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+							<input type="password" id="inputPassword" class="form-control" name="password" 
+								placeholder="Password" required>
+							<div class="valid-check-container" id="password-check" hidden>
+								<div class="valid-check">
+									<i class="far fa-check-circle"></i>
+								</div>
+							</div>
 							<label for="inputPassword">Password</label>
 						</div>
-						<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button>
+						<div class="password-invalid-tooltip" hidden>
+							<div class="password-invalid-tooltip-text">
+							</div>
+						</div>
+						<button class="btn btn-lg btn-primary btn-block text-uppercase" 
+							type="submit">Sign up</button>
 					</form>
 				</div>
 			</div>
