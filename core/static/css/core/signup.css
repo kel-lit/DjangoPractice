@@ -1,6 +1,7 @@
 .user-taken-tooltip, 
 .email-invalid-tooltip,
-.password-invalid-tooltip{
+.password-invalid-tooltip,
+.password-match-invalid-tooltip{
     color: #495057;
     text-align: center;
     transform: translate(0, -10px);

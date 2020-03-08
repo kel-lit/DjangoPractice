@@ -3,26 +3,41 @@ $(document).ready(function(){
 
     $('.signin-submit').prop('disabled', true);
 
-    var user_valid, email_valid, pass_valid;
-
-    $('.form-control').change(function(){
-        user_valid = $('#inputUsername').attr("data-valid");
-        email_valid = $('#inputEmail').attr("data-valid");
-        pass_valid = $('#inputPassword').attr("data-valid");
-        if (user_valid && email_valid && pass_valid === 'true'){
-            // enable form button when all inputs are valid
-            $('.signin-submit').prop('disabled', false);
-        }
-        else {
-            $('.signin-submit').prop('disabled', true);
-        }
-    });
-
     isUserValid();
     isEmailValid();
     isPassValid();
+    doPasswordsMatch();
 
+    $('.form-control').on('change focusout', isFormValid);
+
+    $('.form-signin').submit(function(e){
+        e.preventDefault();
+        var form = this;
+        $(':focus').blur();
+        if (isFormValid()){
+            this.submit();
+        }
+    });
 });
+
+function isFormValid(){
+
+    var user_valid, email_valid, pass_valid, pass_match;
+
+    user_valid = toBool($('#inputUsername').attr('data-valid'));
+    email_valid = toBool($('#inputEmail').attr('data-valid'));
+    pass_valid = toBool($('#inputPassword').attr('data-valid'));
+    pass_match = toBool($('#inputPasswordMatch').attr('data-valid'));
+    if (user_valid && email_valid && pass_valid && pass_match){
+        // enable form button when all inputs are valid
+        $('.signin-submit').prop('disabled', false);
+        return true;
+    }
+    else {
+        $('.signin-submit').prop('disabled', true);
+        return false;
+    }
+};
 
 function isUserValid(){
 
@@ -68,7 +83,7 @@ function isEmailValid(){
 
 function isPassValid(){
 
-    $('#inputPassword').bind("input", function(){
+    $('#inputPassword').bind('input', function(){
        var pass = $('#inputPassword').val();
        var tooltip = createPasswordTooltip(pass);
        $('.password-invalid-tooltip-text').html(tooltip);
@@ -79,9 +94,7 @@ function isPassValid(){
             validInput(true, "#inputPassword");
         }
         else{
-            console.log(passIsValid(pass));
             if (passIsValid(pass)){
-
                 $('.password-invalid-tooltip').prop('hidden', true);
                 $('#password-check').prop('hidden', false);
                 validInput(true, '#inputPassword')
@@ -91,6 +104,32 @@ function isPassValid(){
                 $('.password-invalid-tooltip').prop('hidden', false);
                 $('#password-check').prop('hidden', true);
                 validInput(false, '#inputPassword')
+            };
+        };
+    });
+};
+
+function doPasswordsMatch(){
+
+    $('#inputPasswordMatch').focusout(function(){
+        var password = $('#inputPassword').val();
+        var match = $('#inputPasswordMatch').val();
+        if (match == ""){
+            //If field is empty, remove tooltip
+            $('.password-match-invalid-tooltip').prop('hidden', true);
+            $('#password-match-check').prop('hidden', true);
+            validInput(true, "#inputPasswordMatch");
+        }
+        else {
+            if (password == match){
+                $('.password-match-invalid-tooltip').prop('hidden', true);
+                $('#password-match-check').prop('hidden', false);
+                validInput(true, '#inputPasswordMatch')
+            }
+            else {
+                $('.password-match-invalid-tooltip').prop('hidden', false);
+                $('#password-match-check').prop('hidden', true);
+                validInput(false, '#inputPasswordMatch')
             };
         };
     });
@@ -211,4 +250,14 @@ function createPasswordTooltip(password){
     };
 
     return tooltip;
+}
+
+function toBool(string){
+
+    if (string == 'true'){
+        return true;
+    }
+    else {
+        return false;
+    }
 }
